@@ -1,0 +1,154 @@
+.card {
+  background: var(--warm-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--grey-200);
+  padding: 1.25rem 1.4rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  position: relative;
+  transition: box-shadow var(--transition), transform var(--transition);
+  animation: fadeSlideIn 0.35s ease both;
+  animation-delay: var(--delay, 0ms);
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--red), var(--orange));
+  border-radius: 4px 0 0 4px;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Rank badge ───────────────────────────────────────────────────────────── */
+.rank {
+  flex-shrink: 0;
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--red), var(--orange));
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  box-shadow: 0 2px 8px rgba(226,55,68,0.3);
+}
+
+/* ── Card body ────────────────────────────────────────────────────────────── */
+.body {
+  flex: 1;
+  min-width: 0;
+}
+
+.name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--grey-900);
+  margin-bottom: 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cuisine {
+  font-size: 0.875rem;
+  color: var(--grey-700);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* ── Meta row ─────────────────────────────────────────────────────────────── */
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* ── Rating badge ─────────────────────────────────────────────────────────── */
+.ratingBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.ratingNum  { font-size: 1rem; }
+.ratingOf   { font-size: 0.72rem; opacity: 0.75; }
+.stars      { letter-spacing: -0.05em; font-size: 0.78rem; }
+
+/* Rating colour variants */
+.excellent { background: #e8f5e9; color: #1b5e20; }
+.great     { background: #f1f8e9; color: #33691e; }
+.good      { background: #fff8e1; color: #f57f17; }
+.average   { background: #fff3e0; color: #e65100; }
+.below     { background: #fce4ec; color: #b71c1c; }
+.noRating  { background: var(--grey-200); color: var(--grey-500); }
+
+.noRatingText { font-size: 0.82rem; }
+
+/* ── Info pills ───────────────────────────────────────────────────────────── */
+.infoPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--grey-100);
+  border: 1px solid var(--grey-200);
+  color: var(--grey-700);
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  white-space: nowrap;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Online order badge ───────────────────────────────────────────────────── */
+.orderBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.orderYes {
+  background: #e3f2fd;
+  color: #0d47a1;
+}
+
+.orderNo {
+  background: var(--grey-200);
+  color: var(--grey-700);
+}
+
+@media (max-width: 480px) {
+  .card { flex-direction: column; gap: 0.6rem; }
+  .rank { align-self: flex-start; }
+}
