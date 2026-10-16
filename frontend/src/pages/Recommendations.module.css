@@ -1,0 +1,52 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-primary);
+  min-height: 100vh;
+}
+
+/* ── Page header band ─────────────────────────────────────────────────── */
+.pageHero {
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 3rem 1.5rem 2.5rem;
+  text-align: center;
+}
+
+.heroInner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.heroHeading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.75rem, 4vw, 2.4rem);
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+  color: var(--text-primary);
+}
+
+.heroIcon {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.heroSub {
+  font-size: 0.975rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ── Content area ─────────────────────────────────────────────────────── */
+.content {
+  max-width: 860px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}

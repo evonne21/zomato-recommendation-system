@@ -1,3 +1,4 @@
+import { AlertCircle, Search, CheckCircle2, UtensilsCrossed } from 'lucide-react';
 import RestaurantCard from './RestaurantCard.jsx';
 import styles from './ResultsSection.module.css';
 
@@ -24,7 +25,7 @@ export default function ResultsSection({ results, loading, error }) {
     return (
       <section className={styles.section} aria-live="polite">
         <div className={styles.errorBox} role="alert">
-          <span className={styles.errorIcon} aria-hidden="true">⚠️</span>
+          <AlertCircle size={24} className={styles.errorIcon} aria-hidden="true" />
           <div>
             <strong>Something went wrong</strong>
             <p>{error}</p>
@@ -39,7 +40,7 @@ export default function ResultsSection({ results, loading, error }) {
     return (
       <section className={styles.section} aria-live="polite">
         <div className={styles.emptyBox}>
-          <span className={styles.emptyIcon} aria-hidden="true">🔍</span>
+          <Search size={36} strokeWidth={1.8} className={styles.emptyIcon} aria-hidden="true" />
           <h3 className={styles.emptyTitle}>No restaurants found</h3>
           <p className={styles.emptyMsg}>
             Try broadening your search — increase the budget, lower the minimum
@@ -56,9 +57,12 @@ export default function ResultsSection({ results, loading, error }) {
       <section className={styles.section} aria-live="polite">
         <div className={styles.resultsHeader}>
           <h2 className={styles.resultsTitle}>
-            🎉 Found{' '}
-            <span className={styles.count}>{results.count}</span>{' '}
-            {results.count === 1 ? 'restaurant' : 'restaurants'}
+            <CheckCircle2 size={24} strokeWidth={2.2} className={styles.successIcon} aria-hidden="true" />
+            <span>
+              Found{' '}
+              <span className={styles.count}>{results.count}</span>{' '}
+              {results.count === 1 ? 'restaurant' : 'restaurants'}
+            </span>
           </h2>
           <p className={styles.resultsSub}>
             Sorted by best match &amp; number of reviews
@@ -82,7 +86,7 @@ export default function ResultsSection({ results, loading, error }) {
   return (
     <section className={styles.section}>
       <div className={styles.idleBox}>
-        <span className={styles.idleIcon} aria-hidden="true">🍛</span>
+        <UtensilsCrossed size={36} strokeWidth={1.8} className={styles.idleIcon} aria-hidden="true" />
         <p className={styles.idleText}>
           Fill in your preferences above and click{' '}
           <strong>Find Restaurants</strong> to discover great places to eat!

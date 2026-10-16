@@ -2,6 +2,7 @@ import { API_BASE_URL } from '../config.js';
 
 /**
  * Fetch all available cuisines from the backend.
+ * GET /cuisines
  * @returns {Promise<string[]>}
  */
 export async function fetchCuisines() {
@@ -12,6 +13,7 @@ export async function fetchCuisines() {
 
 /**
  * Fetch restaurant recommendations.
+ * POST /recommend
  * @param {Object} params
  * @param {string}      params.cuisine
  * @param {number}      params.max_budget
@@ -47,5 +49,31 @@ export async function fetchRecommendations({
     throw new Error(body.error || `Server error: ${res.status}`);
   }
 
+  return res.json();
+}
+
+/**
+ * Fetch analytics data from the backend.
+ * GET /analytics
+ *
+ * Actual response shape from Flask:
+ * {
+ *   total_restaurants   : number,
+ *   average_rating      : number | null,
+ *   median_cost         : number | null,
+ *   cuisine_count       : number,
+ *   imputed_ratings     : number,
+ *   rating_distribution : [{ range: string, count: number }],
+ *   cost_distribution   : [{ range: string, count: number }],
+ *   top_cuisines        : [{ cuisine: string, count: number }],
+ *   online_ordering     : [{ category: string, count: number }],
+ *   table_booking       : [{ category: string, count: number }],
+ *   rating_vs_cost      : [{ rating: number, cost: number }],
+ * }
+ * @returns {Promise<Object>}
+ */
+export async function fetchAnalytics() {
+  const res = await fetch(`${API_BASE_URL}/analytics`);
+  if (!res.ok) throw new Error(`Server error: ${res.status}`);
   return res.json();
 }

@@ -1,9 +1,59 @@
 .footer {
-  text-align: center;
-  padding: 1.5rem 1rem;
-  color: var(--grey-500);
-  font-size: 0.85rem;
-  border-top: 1px solid var(--grey-200);
-  margin-top: 2rem;
-  background: var(--warm-white);
+  background: #211C1A;
+  color: #9A918A;
+  padding: 2.5rem 1.5rem;
+  margin-top: auto;
+  border-top: 1px solid #2E2622;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #F0EBE3;
+}
+
+.brandIcon {
+  color: var(--accent-gold);
+}
+
+.accent {
+  color: var(--accent-gold);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 0.75rem;
+}
+
+.link {
+  color: #B0A79E;
+  text-decoration: none;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-xs);
+  transition: color var(--transition);
+}
+
+.link:hover {
+  color: var(--accent-gold);
+}
+
+.copy {
+  font-size: 0.78rem;
+  color: #6E6760;
 }

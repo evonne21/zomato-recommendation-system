@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Search, Utensils, AlertTriangle, Star } from 'lucide-react';
 import { fetchCuisines, fetchRecommendations } from '../services/api.js';
 import styles from './SearchForm.module.css';
 
@@ -69,12 +70,14 @@ export default function SearchForm({ onResults, onLoading, onError }) {
     <section className={styles.section}>
       <div className={styles.card}>
         <h2 className={styles.heading}>
-          <span aria-hidden="true">🔍</span> Find Your Perfect Restaurant
+          <Search size={22} className={styles.headingIcon} aria-hidden="true" />
+          <span>Find Your Perfect Restaurant</span>
         </h2>
 
         {cuisinesError && (
           <div className={styles.cuisinesError} role="alert">
-            <span aria-hidden="true">⚠️</span> {cuisinesError}
+            <AlertTriangle size={18} className={styles.alertIcon} aria-hidden="true" />
+            <span>{cuisinesError}</span>
           </div>
         )}
 
@@ -160,7 +163,8 @@ export default function SearchForm({ onResults, onLoading, onError }) {
                   className={styles.range}
                 />
                 <span className={styles.ratingBadge}>
-                  ★ {Number(form.min_rating).toFixed(1)}
+                  <Star size={12} fill="currentColor" strokeWidth={0} aria-hidden="true" />
+                  <span>{Number(form.min_rating).toFixed(1)}</span>
                 </span>
               </div>
             </div>
@@ -224,11 +228,12 @@ export default function SearchForm({ onResults, onLoading, onError }) {
             {submitting ? (
               <>
                 <span className={styles.spinner} aria-hidden="true" />
-                Searching…
+                <span>Searching…</span>
               </>
             ) : (
               <>
-                <span aria-hidden="true">🍴</span> Find Restaurants
+                <Utensils size={18} strokeWidth={2.2} aria-hidden="true" />
+                <span>Find Restaurants</span>
               </>
             )}
           </button>

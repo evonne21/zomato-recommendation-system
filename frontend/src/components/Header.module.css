@@ -1,18 +1,10 @@
 .header {
-  background: linear-gradient(135deg, var(--red) 0%, var(--orange) 100%);
+  background: var(--terracotta);
   color: #fff;
   padding: 2.5rem 1.5rem 2rem;
   text-align: center;
   position: relative;
   overflow: hidden;
-}
-
-.header::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  pointer-events: none;
 }
 
 .inner {
@@ -30,8 +22,7 @@
 }
 
 .logoIcon {
-  font-size: 2.2rem;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+  color: var(--ochre);
 }
 
 .logoText {
@@ -40,11 +31,11 @@
   font-weight: 800;
   letter-spacing: -0.02em;
   color: #fff;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.2);
 }
 
 .logoAccent {
-  color: #FFE0B2;
+  color: var(--ochre);
 }
 
 .tagline {

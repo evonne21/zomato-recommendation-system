@@ -1,3 +1,4 @@
+import { UtensilsCrossed } from 'lucide-react';
 import styles from './Header.module.css';
 
 export default function Header() {
@@ -5,9 +6,9 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.inner}>
         <div className={styles.logo}>
-          <span className={styles.logoIcon} aria-hidden="true">🍽️</span>
+          <UtensilsCrossed size={32} strokeWidth={2.2} className={styles.logoIcon} aria-hidden="true" />
           <span className={styles.logoText}>
-            Zomato <span className={styles.logoAccent}>Finder</span>
+            Dine<span className={styles.logoAccent}>Wise</span>
           </span>
         </div>
         <p className={styles.tagline}>

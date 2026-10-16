@@ -1,15 +1,5 @@
+import { Utensils, Star, IndianRupee, MapPin, ShoppingBag, Store } from 'lucide-react';
 import styles from './RestaurantCard.module.css';
-
-/**
- * Maps a numeric rating to a star display string.
- */
-function stars(rating) {
-  const full = Math.round(rating * 2) / 2;   // nearest 0.5
-  const filled = Math.floor(full);
-  const half   = full % 1 !== 0 ? 1 : 0;
-  const empty  = 5 - filled - half;
-  return '★'.repeat(filled) + (half ? '½' : '') + '☆'.repeat(empty);
-}
 
 /**
  * Maps a rating number to a colour class.
@@ -45,7 +35,8 @@ export default function RestaurantCard({ restaurant, index }) {
         <h3 className={styles.name} title={name}>{name}</h3>
 
         <p className={styles.cuisine}>
-          <span aria-hidden="true">🍴</span> {cuisine}
+          <Utensils size={14} className={styles.cuisineIcon} aria-hidden="true" />
+          <span>{cuisine}</span>
         </p>
 
         <div className={styles.meta}>
@@ -53,9 +44,9 @@ export default function RestaurantCard({ restaurant, index }) {
           <div className={`${styles.ratingBadge} ${hasRating ? ratingClass(ratingNum) : styles.noRating}`}>
             {hasRating ? (
               <>
+                <Star size={13} fill="currentColor" strokeWidth={0} aria-hidden="true" />
                 <span className={styles.ratingNum}>{ratingNum.toFixed(1)}</span>
                 <span className={styles.ratingOf}>/5</span>
-                <span className={styles.stars} aria-hidden="true">{stars(ratingNum)}</span>
               </>
             ) : (
               <span className={styles.noRatingText}>No rating</span>
@@ -64,7 +55,7 @@ export default function RestaurantCard({ restaurant, index }) {
 
           {/* Cost */}
           <div className={styles.infoPill}>
-            <span aria-hidden="true">💰</span>
+            <IndianRupee size={13} className={styles.metaIcon} aria-hidden="true" />
             <span>
               {cost !== null && cost !== undefined
                 ? `₹${Number(cost).toLocaleString('en-IN')} for two`
@@ -74,13 +65,17 @@ export default function RestaurantCard({ restaurant, index }) {
 
           {/* Area */}
           <div className={styles.infoPill}>
-            <span aria-hidden="true">📍</span>
+            <MapPin size={13} className={styles.metaIcon} aria-hidden="true" />
             <span>{area}</span>
           </div>
 
           {/* Online order */}
           <div className={`${styles.orderBadge} ${onlineOrder === 'Yes' ? styles.orderYes : styles.orderNo}`}>
-            <span aria-hidden="true">{onlineOrder === 'Yes' ? '🛵' : '🏪'}</span>
+            {onlineOrder === 'Yes' ? (
+              <ShoppingBag size={13} strokeWidth={2.2} aria-hidden="true" />
+            ) : (
+              <Store size={13} strokeWidth={2.2} aria-hidden="true" />
+            )}
             <span>{onlineOrder === 'Yes' ? 'Online Order' : 'Dine-in Only'}</span>
           </div>
         </div>

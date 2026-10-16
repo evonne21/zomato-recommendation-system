@@ -6,60 +6,104 @@
 }
 
 :root {
-  /* Brand palette */
-  --red:        #E23744;
-  --red-dark:   #b82d38;
-  --red-light:  #fde8ea;
-  --orange:     #F4762F;
-  --amber:      #F5A623;
-  --cream:      #FFF8F0;
-  --warm-white: #FFFFFF;
+  /* ── Core Design Tokens: Premium Burgundy + Champagne + Ivory Palette ── */
+  --bg-primary:         #F7F4EE;   /* warm ivory page background             */
+  --card-bg:            #FFFFFF;   /* pure white for cards                   */
+  --subtle-surface:     #EFE9E0;   /* muted warm surface                     */
 
-  /* Neutrals */
-  --grey-100: #f9f9f9;
-  --grey-200: #f0f0f0;
-  --grey-300: #e0e0e0;
-  --grey-500: #9e9e9e;
-  --grey-700: #555555;
-  --grey-900: #1a1a1a;
+  --accent-primary:     #783F4B;   /* muted burgundy – buttons, active nav   */
+  --accent-primary-hov: #5E2F39;   /* darker burgundy on hover               */
+  --accent-primary-lt:  #F2E8EA;   /* very light blush tint for hover bg     */
+  --accent-gold:        #C6A96B;   /* champagne gold – decorative accents     */
+  --accent-gold-lt:     #FAF3E4;   /* light champagne tint                   */
 
-  /* Shadows */
-  --shadow-sm: 0 1px 4px rgba(0,0,0,0.08);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,0.13);
-  --shadow-red: 0 4px 16px rgba(226,55,68,0.25);
+  --text-primary:       #302B29;   /* near-black charcoal                    */
+  --text-secondary:     #77716C;   /* medium warm grey                       */
+  --text-muted:         #A09992;   /* lighter muted text                     */
+  --text-on-dark:       #FFFFFF;   /* white text on dark / photo bg          */
 
-  /* Radii */
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
+  --border:             #E5DED5;   /* subtle warm border                     */
+  --border-focus:       #783F4B;   /* burgundy focus ring                    */
 
-  /* Transitions */
-  --transition: 0.22s ease;
+  /* ── Shadows ──────────────────────────────────────────────────────────── */
+  --shadow-xs:          0 1px 2px  rgba(48, 43, 41, 0.04);
+  --shadow-sm:          0 1px 4px  rgba(48, 43, 41, 0.06);
+  --shadow-md:          0 4px 14px rgba(48, 43, 41, 0.08);
+  --shadow-lg:          0 8px 28px rgba(48, 43, 41, 0.10);
+  --shadow-burgundy:    0 4px 14px rgba(120, 63, 75, 0.20);
+
+  /* ── Radii ─────────────────────────────────────────────────────────────── */
+  --radius-xs:          4px;
+  --radius-sm:          8px;
+  --radius-md:          12px;
+  --radius-lg:          18px;
+  --radius-xl:          24px;
+
+  /* ── Transition ─────────────────────────────────────────────────────────── */
+  --transition:         0.2s ease;
+  --transition-slow:    0.35s ease;
+
+  /* ── Backward-compat aliases (used by any older CSS still referencing them) */
+  --cream:              var(--bg-primary);
+  --card-surface:       var(--card-bg);
+  --muted-surface:      var(--subtle-surface);
+  --terracotta:         var(--accent-primary);
+  --terracotta-hover:   var(--accent-primary-hov);
+  --terracotta-light:   var(--accent-primary-lt);
+  --olive:              #5C6B4A;   /* retained for any references             */
+  --olive-light:        #EEF2E8;
+  --ochre:              var(--accent-gold);
+  --ochre-hover:        #A88940;
+  --ochre-light:        var(--accent-gold-lt);
+  --text-main:          var(--text-primary);
+  --text-light:         var(--text-on-dark);
+  --border-focus:       var(--accent-primary);
+  --shadow-terracotta:  var(--shadow-burgundy);
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
-  background-color: var(--cream);
-  color: var(--grey-900);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   line-height: 1.6;
   min-height: 100vh;
 }
 
-/* ── Typography helpers ───────────────────────────────────────────────────── */
-h1, h2, h3 {
+/* ── Typography ────────────────────────────────────────────────────────────── */
+h1, h2, h3, h4 {
   font-family: 'Playfair Display', Georgia, serif;
-  line-height: 1.2;
+  line-height: 1.25;
+  color: var(--text-primary);
 }
 
-/* ── Utility ──────────────────────────────────────────────────────────────── */
+p, span, label, input, select, button, li, a {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ── Accessible Focus ──────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 3px;
+}
+
+/* ── Reduced-motion ────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Utility ───────────────────────────────────────────────────────────────── */
 .visually-hidden {
   position: absolute;
-  width: 1px; height: 1px;
+  width: 1px;
+  height: 1px;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
 }
